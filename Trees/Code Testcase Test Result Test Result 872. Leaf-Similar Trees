@@ -1,0 +1,28 @@
+class Solution {
+public:
+
+    void leaf(TreeNode* root,vector<int>&ans){
+        if(!root){
+            return;
+        }
+        if(!root->left && !root->right){
+            ans.push_back(root->val);
+        }
+        if(root->left){
+            leaf(root->left,ans);
+        }
+        if(root->right){
+            leaf(root->right,ans);
+        }
+    }
+
+    bool leafSimilar(TreeNode* root1, TreeNode* root2) {
+        vector<int>r1,r2;
+        leaf(root1,r1);
+        leaf(root2,r2);
+        if(r1!=r2){
+            return false;
+        }
+        return true;
+    }
+};
